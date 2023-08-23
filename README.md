@@ -4,6 +4,16 @@
 
 The `simpFetch` function is a utility function designed to simplify making HTTP requests using the Fetch API in JavaScript. It abstracts away some of the complexities of constructing and handling fetch requests, making it easier to perform common HTTP operations.
 
+# Installing
+
+To integrate the functionality of simpFetch into your project, follow these steps:
+
+Add the simpFetch module to your project by including the following script tag in your HTML file:
+
+```html
+<script type="module" src="https://cdn.hypll.org/simpfetch/index.mjs"></script>
+```
+
 ## Usage
 
 To use the `simpFetch` function, you need to provide at least the `url` parameter, which specifies the URL you want to send the HTTP request to. Additionally, you can provide an `options` object that can include properties such as `method`, `headers`, and `body`.
