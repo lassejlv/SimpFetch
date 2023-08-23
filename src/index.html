@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="loading-status">Loading...</div>
+    <div id="data"></div>
+
+    <script type="module">
+      import { simpFetch } from "./dist/index.mjs";
+
+      const URL = "https://jsonplaceholder.typicode.com/todos/1";
+
+      // Get references to the loading status and data elements
+      const loadingStatusElement = document.getElementById("loading-status");
+      const dataElement = document.getElementById("data");
+
+      async function fetchData() {
+        try {
+          // Show loading status
+          loadingStatusElement.textContent = "Loading...";
+
+          // Call simpFetch and get the loading state and data
+          const { loading, data, res } = await simpFetch(URL, {
+            method: "GET",
+            useClean: true,
+          });
+
+          console.log(res);
+
+          // Update loading status in the HTML
+          loadingStatusElement.textContent = loading ? "Loading..." : "";
+
+          // Display fetched data
+          dataElement.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          loadingStatusElement.textContent = "Error loading data.";
+          console.error(error);
+        }
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>
